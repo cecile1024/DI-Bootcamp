@@ -56,6 +56,27 @@ sandwich_orders = ["Tuna sandwich", "Pastrami sandwich",
                    "Egg sandwich", "Chicken sandwich", "Pastrami sandwich"]
 print(sandwich_orders)
 
+sandwich_orders.count("Pastrami sandwich") # 3
+# The deli has run out of pastrami, use a while loop to remove 
+# all occurrences of Pastrami sandwich from sandwich_orders.    
+
+while "Pastrami sandwich" in sandwich_orders :
+    sandwich_orders.remove("Pastrami sandwich")
+
+print(sandwich_orders)
+
+sandwich_orders_two = sandwich_orders[:] #copie ie créer une seconde liste identique pour l'iteration du for
+
+finished_sandwiches = []
+
+for sandwich in sandwich_orders_two :
+    finished_sandwiches.append(sandwich)
+    print(f"I made your {sandwich}")
+    sandwich_orders.remove(sandwich)
+
+print("All sandwiches are made:")
+print(finished_sandwiches)
+print(sandwich_orders) # verifier que la liste sandwich_orders est bien vide
 
 
 
