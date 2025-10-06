@@ -7,6 +7,10 @@ for i in range(1,length+1):
     list_of_multiples.append(number*i)
 print(list_of_multiples)
 
+#version avec une liste comprehension
+multiples=[number*i for i in range(1,length +1)]
+print(multiples)
+
 
 
 # challenge 2
