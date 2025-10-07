@@ -67,6 +67,15 @@ def get_value2(d, key):
 print(get_value2(sample_dict, 'history'))
 # Output: 80
 
+def get_nested(d, keys, defautl=None):
+    for k in keys:
+        d=d.get(k,{})
+        return d or defautl
+history_value=get_nested(sample_dict, ['class','student','marks','history'])
+print(history_value)
+#output: 80
+
+
 # challenge 2
 sample_dict = {
   "name": "Kelly",
@@ -75,10 +84,21 @@ sample_dict = {
   "city": "New york"
 
 }
-keys = ["name", "salary"]   
+keys = ["name", "salary"]   # keys to remove
 del sample_dict[keys[0]]
 del sample_dict[keys[1]]
 print(sample_dict)
+#ou bien
+keys_to_remove = ["name", "salary"]
+#reconstuire le dictionnaire sans les clés à supprimer
+new_dict = {k: v for k, v in sample_dict.items() if k not in keys_to_remove}
+print(new_dict)
+#ou bien
+for key in keys_to_remove:
+        sample_dict.pop(key)
+print(sample_dict)
+#output {'age': 25, 'city': 'New york'}
+
 
 my_books = {
   "title": "Harry Potter",
@@ -89,7 +109,7 @@ print(my_books.items())
 print(type(my_books.items()))
 print(list(my_books.items()))
 
-# challenge loops dictionnary
+# challenge loops WHILE dictionnary
 
 # my_dictio={}
 # i=0
@@ -99,3 +119,14 @@ print(list(my_books.items()))
 #     my_dictio[i]=word
 #     if word=="quit"
 #     break
+
+my_dictio={}
+while True: 
+    key=input("Enter key (or 'quit' to stop):")
+    if key.lower()=='quit':  # attention methode lower importante pour bien comparer les 'quit'
+        break
+    value=input("Enter value:")
+    my_dictio[key]=value
+print(my_dictio)
+
+
