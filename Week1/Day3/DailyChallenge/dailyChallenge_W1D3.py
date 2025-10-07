@@ -19,17 +19,15 @@ class Farm():
 # Bonus
     def get_animal_types(self):
          sorted_animals=sorted(self.animals.keys())
-         print(f"{sorted_animals}")
+         print(f"{sorted_anim als}")
          return sorted_animals # list of animal type in alpha order
 
     def get_short_info(self):
         animals_type=self.get_animal_types() # return a list of animal type in alpha order
-        # mettre au pluriel les types d'animaux concernés
-
         for animal in animals_type:
             if self.animals[animal]>1:
                 index=animals_type.index(animal)
-                animals_type[index]+='s'
+                animals_type[index]+='s' # mettre au pluriel les types d'animaux concernés
         print(f"{self.farm_name} has {', '.join(animals_type[0:-1])} and {animals_type[-1]}")
 
 
