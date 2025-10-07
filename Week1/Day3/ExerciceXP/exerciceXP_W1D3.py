@@ -55,5 +55,86 @@ else:
     print("Both dogs have the same size")
 
 # Exercise 3 : Who’s the song producer?
+# Goal: Create a Song class to represent song lyrics and print them.
+class Song():
+    def __init__(self,lyrics=[]):
+        self.lyrics=lyrics
+
+    def sing_me_a_song(self):
+        for element in self.lyrics:
+            print(element)
+
+stairway = Song(["There s a lady who's sure", "all that glitters is gold",
+                  "and she s buying a stairway to heaven"])
+stairway.sing_me_a_song()
+
 
 # Exercise 4 : Afternoon at the Zoo
+class Zoo():
+    # def __init__(self,zoo_name,animals=[]):
+    #     self.zoo_name=zoo_name
+    #     self.animals=animals
+
+    def __init__(self,zoo_name):
+        self.zoo_name=zoo_name
+        self.animals=[]
+
+    def add_animal(self,new_animal):
+        if new_animal not in self.animals:
+            self.animals.append(new_animal)
+        else:
+            print(f"The animal {new_animal} is already in the zoo {self.zoo_name}")
+    
+    def get_animals(self):
+        print(f"animals in the zoo are :{' ,'.join(my_zoo.animals)}")
+          
+    def sell_animal(self, animal_sold):
+        if animal_sold in self.animals:
+            self.animals.remove(animal_sold)
+            print(f"The animal {animal_sold} was in the zoo {self.zoo_name} and has been sold.")
+        else:
+            print(f"This animal, the {animal_sold}, is not in the zoo {self.zoo_name}")
+    
+    def sort_animals(self):
+        dict_animals={}
+        for animal in self.animals:
+            initiale=animal[0].upper()
+            if initiale not in dict_animals:
+               dict_animals[initiale]=[]
+            dict_animals[initiale].append(animal)
+        return dict_animals
+        print(dict_animals)
+
+    def get_groups(self):
+        local_dict_one=self.sort_animals()
+        local_dict_two=dict(sorted(local_dict_one.items()))
+        for item in local_dict_two.items(): #.items met le dict sous forme de liste de tuples
+            print(f"{item[0]}:{item[1]}")
+
+my_zoo = Zoo("wildoo")
+my_zoo.animals=["cat", "bird"]
+print(my_zoo.animals)
+print(my_zoo.zoo_name)
+
+my_zoo.add_animal("mouse")
+print(my_zoo.animals)
+
+my_zoo.add_animal("cat") #duplicated cat to test condition
+print(my_zoo.animals)
+
+my_zoo.get_animals()
+
+my_zoo.sell_animal('pig')
+my_zoo.sell_animal('mouse')
+print(my_zoo.animals)
+
+my_zoo.add_animal("cochon")
+my_zoo.add_animal("squirle")
+my_zoo.add_animal("snake")
+my_zoo.add_animal("dragonfly")
+my_zoo.add_animal("superstar")
+
+dictio=my_zoo.sort_animals()
+print(dictio)
+
+my_zoo.get_groups()
