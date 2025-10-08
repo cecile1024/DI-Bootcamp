@@ -79,3 +79,55 @@ print(dog2.fight(dog3))
 
 
 # Exercise 4: Family and Person Classes
+class Person():
+    def __init__(self, first_name,age,last_name=""):
+        self.first_name=first_name
+        self.age=age
+        self.last_name=last_name
+    def is_18(self):
+        if self.age>=18:
+            return True
+        else:
+            return False
+
+class Family():
+    def __init__(self, last_name, members=[]):
+        self.last_name=last_name
+        self.members=members
+    
+    def born(self,first_name,age):
+        person=Person(first_name, age,self.last_name)
+        self.members.append(person)
+          
+    def check_majority(self, first_name):
+        list_members=list(self.members)
+        for index in range(0,len(list_members)):
+            if list_members[index].first_name==first_name:
+                majority=self.members[index].is_18()
+                if majority:
+                    print(f"{first_name}, you are over 18, your parents accept that you will go out with your friends")
+                else:   
+                    print(f"Sorry {first_name}, you are not allowed to go out with your friends.")
+            
+    def family_presentation(self):
+        print(f"{self.last_name}")
+        for member in self.members:
+            print(f"{member.first_name}, {member.age}")
+
+
+
+
+famille=Family('Dupont')
+print(f"{famille.last_name}")
+# print(f"{famille.members}")
+
+JP=famille.born('JP',34)
+Melissa=famille.born('Melissa',2)
+# print(f"{famille.members}")
+
+famille.check_majority('Melissa')
+famille.check_majority('JP')
+
+famille.family_presentation()
+
+
