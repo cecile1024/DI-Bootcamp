@@ -19,7 +19,7 @@ class Farm():
 # Bonus
     def get_animal_types(self):
          sorted_animals=sorted(self.animals.keys())
-         print(f"{sorted_anim als}")
+         print(f"{sorted_animals}")
          return sorted_animals # list of animal type in alpha order
 
     def get_short_info(self):
